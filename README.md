@@ -1,4 +1,5 @@
 # Basketball Stats Tool 1.0
+A Treehouse Data Analysis Project
 
 ## About
 Given a list of players and a list of team names, this tool adds players to each team until all players have been added. Teams are balanced by their total player count and experience level.
