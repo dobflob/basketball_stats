@@ -6,4 +6,4 @@ When the application starts, this tool takes a list of players and a list of tea
 
 The user is presented with a menu allowing them to view a team's stats or quit the app.
 
-Team stats displayed include: total number of players, total number of experienced players, total number of inexperienced players, average height of the team, player names, and player guardians.
+Team stats displayed include: total number of players, total number of experienced players, total number of inexperienced players, average height of the team, player names, and player guardians. Players are listed in order of height, shortest to tallest.
