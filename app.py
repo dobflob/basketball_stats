@@ -45,6 +45,7 @@ def balance_teams(team_data, player_data):
         team = {}
         team['team_name'] = record
         team['players'] = []
+        team['player_names'] = []
         team['guardians'] = []
         teams.append(team)
 
@@ -54,21 +55,28 @@ def balance_teams(team_data, player_data):
 
     # Loop through the teams and for each one, loop through the experienced players and inexperienced players based on how many of each group should be on each team, adding the appropriate player and player info to the team
     for team in teams:
+        players = []
         experienced_count = 0
         inexperienced_count  = 0
         total_height = 0
+
         for i in range(experienced_per_team):
             player = experienced_players.pop()
-            team['players'].append(player['name'])
-            team['guardians'] = team['guardians'] + player['guardians']
+            players.append(player)
             experienced_count += 1
             total_height += player['height']
+
         for i in range(inexperienced_per_team):
             player = inexperienced_players.pop()
-            team['players'].append(player['name']) 
-            team['guardians'] = team['guardians'] + player['guardians']
+            players.append(player) 
             inexperienced_count += 1
             total_height += player['height']
+
+        players = sorted(players, key=lambda item: item['height'])
+        for player in players:
+            team['players'].append(player['name'])
+            team['guardians'] = team['guardians'] + player['guardians']
+        
         team['experienced_players'] = experienced_count
         team['inexperienced_players'] = inexperienced_count
         team['average_height'] = total_height / len(team['players'])
@@ -91,6 +99,9 @@ def draw_blanks(*args):
 
 # Print Team Stats in readible format
 def print_team_stats(team):
+
+    print(team)
+
     print(f"""
 
 Team: {team['team_name']} Stats
